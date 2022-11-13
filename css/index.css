@@ -22,7 +22,7 @@
     height: 55px;
     display: inline-block;
     text-indent: -9999px;
-    background: url(../images/logo.png);
+    background: url(https://cdn.jsdelivr.net/gh/faxbox/faxbox.github.io/images/logo.png);
     background-size: 200px 55px;
 }
 .wzfb-nav{
@@ -157,10 +157,10 @@
     color: rgb(138, 138, 138);
 }
 .main{
-    background:url(../images/bg.jpg) no-repeat;
+    background:url(https://cdn.jsdelivr.net/gh/faxbox/faxbox.github.io/images/bg.jpg) no-repeat;
 }
 .subtitle h2{
-    background: url(../images/title_bg1.png) no-repeat;
+    background: url(https://cdn.jsdelivr.net/gh/faxbox/faxbox.github.io/images/title_bg1.png) no-repeat;
     background-position: center;
     color: #fff;
     font-size: 28px;
