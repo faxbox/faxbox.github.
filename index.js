@@ -1,5 +1,5 @@
 var title = "FaXbox网址永久网站发布导航";
-var user = "紫剑真人";
+var user = "FaXbox";
 var icp = "浙ICP备284993729号-5";
 var pins = [
     {
