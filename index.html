@@ -18,8 +18,28 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="templates/baisu/css/style.css" />
     <link rel="stylesheet" type="text/css" href="templates/baisu/css/font-awesome.min.css" />
+<style>
+	.fa-info-circle {
+        margin-left: 4px;
+        position: relative;
+    }
 
-</head>
+.fa-info-circle:hover::after {
+		content: attr(data-title);
+  	    display: inline-block;
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        color: #333;
+        background-color: #EEE;
+        position: fixed;   (如果位置不对用absolute)
+        width: 250px;
+        line-height:18px;
+        white-space: pre-wrap;
+    }
+	</style>
+
+	</head>
 
 <body>
     <header>
@@ -96,10 +116,11 @@
                     <a href="https://www.2345.com/?k68149838" target="_blank">
                         <p class="name">
                             <img src="https://www.2345.com/favicon.ico">
-				网址导航（好用的网站导航）   		  
-			    </p>
-                    </a>
-		</div>
+				网址导航（好用的网站导航）   		     
+			    </p>     
+			</a>
+		<i class="fa fa-info-circle" data-title="陆雪芹陆雪芹陆雪芹陆雪芹"></i> 
+		    </div>
 
 		    <div class="list url-list">
                     <a href="https://www.1thlib.com/" target="_blank">
@@ -108,7 +129,8 @@
                            世界网址（世界网站收录）
                         </p>
                     </a>
-                </div>
+<i class="fa fa-info-circle" data-title="陆雪芹陆雪芹陆雪芹陆雪芹"></i> 
+		    </div>
                 <div class="list url-list">
                     <a href="http://baidu.tao234.com/?0115" target="_blank">
                         <p class="name">
