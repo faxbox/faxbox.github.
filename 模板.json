@@ -1,0 +1,53 @@
+var jsonData = {
+  "public": {
+      "title": "公共服务",
+      "name": "public",
+      "icon": "ios-compass",
+      "nav": [
+		 {
+		     "icon": "./static/images/Tencent.png",
+		     "name": "腾讯视频",
+		     "desc": "腾讯视频-中国领先的在线视频媒体平台,海量高清视频在线观看",
+		     "link": "https://v.qq.com/"
+		 },
+      ]
+   },
+  "video": {
+      "title": "视频",
+      "name": "video",
+      "icon": "ios-videocam",
+      "nav": [
+		  {
+              "icon": "./static/images/Tencent.png",
+              "name": "腾讯视频",
+              "desc": "腾讯视频-中国领先的在线视频媒体平台,海量高清视频在线观看",
+              "link": "https://v.qq.com/"
+          },{
+              "icon": "./static/images/kwai_icon.8f6787d8.ico",
+              "name": "快手",
+              "desc": "快手是一款国民级短视频App。在快手，了解真实的世界，认识有趣的人，也可以记录真实而有趣的自己。快手，拥抱每一种生活。",
+              "link": "https://www.kuaishou.com/new-reco"
+          }
+      ]
+  },
+
+  "tool": {
+      "title": "视频",
+      "name": "tool",
+      "icon": "ios-videocam",
+      "nav": [
+		  {
+              "icon": "./static/images/Tencent.png",
+              "name": "腾讯视频",
+              "desc": "腾讯视频-中国领先的在线视频媒体平台,海量高清视频在线观看",
+              "link": "https://v.qq.com/"
+          },{
+              "icon": "./static/images/kwai_icon.8f6787d8.ico",
+              "name": "快手",
+              "desc": "快手是一款国民级短视频App。在快手，了解真实的世界，认识有趣的人，也可以记录真实而有趣的自己。快手，拥抱每一种生活。",
+              "link": "https://www.kuaishou.com/new-reco"
+          }
+      ]
+  }
+
+}

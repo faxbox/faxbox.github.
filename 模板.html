@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<!--头部-->
+<head>
+    <meta charset="utf-8">
+    <title>FaxBox工具箱|FaxBo资源下载</title>
+	<link rel="icon" href="./static/images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="./static/css/viewuiplus.css">
+    <script type="text/javascript" src="./static/js/vue.global.js"></script>
+    <script type="text/javascript" src="./static/js/viewuiplus.min.js"></script>
+	<script type="text/javascript" src="./data.json"></script>
+    <meta name="keywords" content="FaxBox工具箱,FaxBo资源下载,资源下载大全,网络资源工具箱" />
+    <meta name="description" content="FaxBox工具箱资源下载 - 获取高质量的FaxBox工具箱资源，包括各种实用工具、插件和模板。这些资源旨在帮助用户更高效地完成日常工作，提升生产力。在这里，您可以找到最适合您需求的资源，并轻松下载和使用。通过我们的下载服务，您将能够充分利用FaxBox工具箱的强大功能，提升您的工作效率和质量。" />
+</head>
+<!--头部-->
+<body id="body">
+<div id="app">
+	<!--不修改--><Layout :style="{minHeight: '100vh'}">
+		<Sider ref="side1" hide-trigger collapsible :collapsed-width="78" v-model="isCollapsed">
+			<div class="layout-logo" v-show="!isCollapsed" @click="collapsedSider">
+            <p style="color:white;font-size:45px;">FaxBox</p><!--LOGO-->
+			</div>
+			<div class="layout-logo" v-show="isCollapsed" @click="collapsedSider">
+                 <p style="color:white;font-size:45px;">FaxBox</p><!--LOGO-->
+			</div>
+			<Scroll height="100vh">
+				 <i-Menu active-name="" theme="dark" width="auto" :class="menuitemClasses" style="margin-top: 20px">
+					<Menu-Item v-for="(value,key) in jsonData" :key='key' :name="value.name" @click="toPath('#'+key)">
+						<Icon :type="value.icon"></Icon>
+						<span strong>{{value.title}}</span>
+					</Menu-Item>
+				</i-Menu>
+			</Scroll>
+		</Sider>
+		<Layout  ><!--不修改-->
+			<Header  class="layout-header-bar" >
+				<Row>
+					<i-col :span="1">
+						<Icon @click="collapsedSider" :class="rotateIcon"  type="md-menu" size="24" class="icon-css"></Icon>
+					</i-col>
+					<i-col :span="22">
+<!--						<i-Input search enter-button="Search" @click="search" v-model="value"  class="input-css"/>-->
+					</i-col>
+					<i-col :span="1">
+						<i-Switch  v-model="themeFlag" @on-change="themeSwitch" class="switch-css" >
+							<template #close>
+								<Icon type="md-sunny" />
+							</template>
+							<template #open>
+								<Icon type="md-moon" />
+							</template>
+						</i-Switch>
+					</i-col>
+				</Row>
+
+
+
+			</Header>
+			<Content class="content-class" >
+			<Scroll height="calc(100vh - 60px)" >
+				<Card :style="{margin: '0',border:0}" >
+					<Row>				
+						<i-col v-for="(value,key) in jsonData" :key='key' span="24" :id="key">
+							<Card :style="{margin: '0 0 20px 0'}">
+								<template #title>
+									<Icon :type="value.icon" :style="{fontSize: '18px',color:'#FF7F00'}"></Icon>&nbsp;
+									<Text strong :style="{fontSize: '18px',color:'#FF7F00'}">{{value.title}}</Text>
+								</template>
+								<template #extra>
+									<Text strong :style="{fontSize: '18px',color:'#FF7F00'}">共计：{{value.nav.length}}</Text>
+								</template>
+								<Row :gutter="20" :wrap="true">
+									<i-col v-for="(item,index) in value.nav" :key='item' :xs="24" :sm="12" :md="8" :lg="6" :xl="6" :xxl="4">
+										<Card :style="{margin: '0 0 20px 0',height: '90%'}">
+											<template #title>
+												<div @click="toUrl(item.link)" style="cursor:pointer;">
+													<Avatar :src="item.icon"></Avatar>
+													<Text strong :style="{margin: '0 0 0 10px',fontSize: '15px'}">{{item.name}}</Text>
+												</div>
+											</template>
+											<Text>{{item.desc}}</Text>
+										</Card>
+									</i-col>
+								</Row>
+							</Card>
+						</i-col>						
+					</Row>
+					<Global-Footer :copyright="copyright" />
+				</Card>
+			</Scroll>
+			</Content>
+		</Layout>
+	</Layout>
+</div>
+<!--JS-->
+<script>
+const app = Vue.createApp({
+	data () {
+		return {
+			isCollapsed: false,
+			jsonData:jsonData,
+			themeFlag:false,
+			theme:'light',
+			copyright: 'Copyright © 2024 FaxBox.github.io All Rights Reserved',
+			value:''
+		}
+	},
+	computed: {
+		rotateIcon () {
+			return [
+				'menu-icon',
+				this.isCollapsed ? 'rotate-icon' : ''
+			];
+		},
+		menuitemClasses () {
+			return [
+				'menu-item',
+				this.isCollapsed ? 'collapsed-menu' : ''
+			]
+		}
+	},
+	mounted() {
+		document.body.setAttribute("theme-mode", "light");
+		if(window.localStorage.getItem("theme")){
+			this.themeFlag = window.localStorage.getItem("theme") === "true"
+			this.theme = window.localStorage.getItem("theme")=== "true"?'dark':'light'
+			document.body.setAttribute("theme-mode", this.theme);
+		}
+	},
+	methods: {
+		collapsedSider () {
+			this.$refs.side1.toggleCollapse();
+		},
+		toPath (id) {
+			window.location.hash=''
+			window.location.hash=id
+		},
+		themeSwitch (){
+			this.theme=this.themeFlag?'dark':'light'
+			window.localStorage.setItem("theme",this.themeFlag)
+			document.body.setAttribute("theme-mode", this.theme);
+		},
+		toUrl(uri) {
+			window.open(uri)
+		},
+		search(){
+
+		}
+	}
+});
+app.use(ViewUIPlus);
+app.mount("#app");
+ </script>
+ <!--JS-->
+ <style>
+#body{
+	/*overflow: hidden;*/
+	::-webkit-scrollbar {
+		width: 6px;
+		background-color: #d8d8d8;
+	}
+
+	/* 滚动槽 */
+	::-webkit-scrollbar-track {
+		border-radius:10px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #FF7F00;
+	}
+}
+#app{
+	.menu-item{
+		height: 100%;
+	}
+	.ivu-menu-dark{
+		background: #0f1015;
+	}
+	.layout-header-bar{
+		background: #fff;
+		box-shadow: 0 2px 3px 2px rgba(0,0,0,.1);
+		height: 60px;
+		z-index: 1;
+		
+	}
+	.switch-css{
+		float: right;
+		margin: 20px 50px 0 0;
+	}
+	.layout-header-bar .icon-css{
+		margin: 20px  0 0 20px;
+	}
+    .ivu-scroll-container{
+		height: calc(100vh - 60px);
+		overflow: auto;
+	}
+	.ivu-scroll-loader .ivu-scroll-loader-wrapper{
+		padding: 0;
+	}
+	.ivu-menu-item{
+		font-size: 15px;
+	}
+	.ivu-layout-sider  {
+		background: #fff;
+	}
+	.ivu-layout-sider-children{
+		background: #0f1015;
+	}
+	.input-css{
+		width: auto;
+		padding: 1rem;
+		font-size: 16px;
+	}
+}
+:root body[theme-mode="dark"] {
+  #app{
+	 background: #0f1015;
+	.ivu-layout-sider-trigger {
+		background: #0f1015;
+	}
+	.ivu-card{
+		background:#242424;
+		color: rgba(255,255,255,.7);
+	}
+	.ivu-card:hover{
+		color: #fff;
+	}
+	.ivu-card-bordered {
+		border: 1px solid #484a56;
+		border-color: #484a56;
+	}
+	.ivu-card-head{
+		border-bottom: 1px solid #484a56;
+	}
+	.layout-header-bar{
+		background: #0f1015;
+		box-shadow: 0 2px 3px 2px #484a56;
+	}
+	.ivu-scroll-container{
+		background: #0f1015;
+	}
+	::-webkit-scrollbar {
+		width: 6px;
+		background-color: #d8d8d8;
+	}
+
+	/* 滚动槽 */
+	::-webkit-scrollbar-track {
+		border-radius:10px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #000;
+	}
+	.input-css .ivu-input{
+		color: #fff;
+		background: #0f1015;
+
+	}
+  }
+}
+
+:root body[theme-mode="light"] {
+#app {
+
+
+
+
+}
+}
+</style>
+<style>
+	.layout{
+		border: 1px solid #d7dde4;
+		background: #f5f7f9;
+		position: relative;
+		border-radius: 4px;
+	}
+	.layout .ivu-menu{
+		z-index: 0
+	}
+	.layout-header-bar{
+		background: #fff;
+		box-shadow: 0 1px 1px rgba(0,0,0,.1);
+	}
+	.layout-logo-left{
+		width: 90%;
+		height: 30px;
+		background: #5b6270;
+		border-radius: 3px;
+		margin: 15px auto;
+	}
+	.menu-icon{
+		transition: all .3s;
+	}
+	.rotate-icon{
+		transform: rotate(-90deg);
+	}
+	.menu-item span{
+		display: inline-block;
+		overflow: hidden;
+		width: 69px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		vertical-align: bottom;
+		transition: width .2s ease .2s;
+	}
+	.menu-item i{
+		transform: translateX(0px);
+		transition: font-size .2s ease, transform .2s ease;
+		vertical-align: middle;
+		font-size: 16px;
+	}
+	.collapsed-menu span{
+		width: 0px;
+		transition: width .2s ease;
+	}
+	.collapsed-menu i{
+		transform: translateX(5px);
+		transition: font-size .2s ease .2s, transform .2s ease .2s;
+		vertical-align: middle;
+		font-size: 22px;
+	}
+	.layout-logo{
+		width: 100%;
+		height: 60px;
+		background: #484a56;
+		border-radius: 3px;
+		position: relative;
+	}
+
+</style>
+</body>
+</html>
