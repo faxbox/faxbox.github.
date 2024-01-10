@@ -7,9 +7,9 @@ var jsonData = {
       "nav": [
 		 {
 		     "icon": "./static/images/Tencent.png",
-		     "name": "腾讯视频",
-		     "desc": "腾讯视频-中国领先的在线视频媒体平台,海量高清视频在线观看",
-		     "link": "https://v.qq.com/"
+		     "name": "系统",
+		     "desc": "系统-装机系统大全,纯净装机系统。",
+		     "link": "https://faxbox.github.io/system"
 		 },
       ]
    },
