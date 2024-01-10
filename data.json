@@ -7,8 +7,8 @@ var jsonData = {
       "nav": [
 		 {
 		     "icon": "./static/images/Tencent.png",
-		     "name": "系统",
-		     "desc": "系统-装机系统大全,纯净装机系统。",
+		     "name": "纯净系统",
+		     "desc": "系统-装机系统大全,纯净的装机系统。",
 		     "link": "https://faxbox.github.io/system"
 		 },
       ]
