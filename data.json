@@ -6,7 +6,7 @@ var jsonData = {
       "icon": "ios-compass",
       "nav": [
 		 {
-		     "icon": "./static/images/Tencent.png",
+		     "icon": "./static/images/system.png",
 		     "name": "纯净系统",
 		     "desc": "系统-装机系统大全,纯净的装机系统。",
 		     "link": "https://faxbox.github.io/system"
